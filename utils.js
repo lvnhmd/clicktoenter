@@ -42,3 +42,11 @@ module.exports.urlToFilename = function urlToFilename(url) {
     }
     return filename;
 };
+
+module.exports.removeFilesFrom = function removeFilesFrom(path, callback) {
+    rmdir(path, function(err, dirs, files) {
+        console.log(dirs);
+        console.log(files);
+        console.log('all files are removed');
+    });
+};
