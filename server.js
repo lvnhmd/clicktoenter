@@ -97,7 +97,7 @@ router.get('/stylist', function(req, res) {
 
                 xray(responseBuffer, 'div.grid', [{ //div class=article__hero
                         img: 'img@srcset',
-                        headline: 'h1.h3 summary__title',
+                        headline: 'h1.summary__title',
                         content: 'p.summary__sell',
                         url: 'footer@data-url'
                     }])
@@ -105,6 +105,7 @@ router.get('/stylist', function(req, res) {
                         if (err) {
                             console.log('Error: ' + err);
                         } else {
+                            console.log(JSON.stringify(data));
                             json[queueItem.url] = data;
                         }
                     });
