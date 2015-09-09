@@ -27,7 +27,7 @@
   </head>
 
 <body>
-
+<section id="clicktoenterapp"></section>
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -50,20 +50,20 @@
 </nav>
 
 <div class="container main-container">
-  
+   
         <div class="row masonry-container">
-
-          <div class="col-md-4 col-sm-6 item">
-            <div class="thumbnail">
-              <img src="http://lorempixel.com/200/200/abstract" alt="">
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+           <script id="hellop" type="text/ractive">
+            <div class="col-md-4 col-sm-6 item">
+              <div class="thumbnail">
+                <img src="http://lorempixel.com/200/200/abstract" alt="">
+                <div class="caption">
+                  <h3>Thumbnail label</h3>
+                    <p>{{greeting}} {{name}}!</p>
+                  <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
               </div>
-            </div>
-          </div><!--/.item  -->
-
+            </div> <!--/.item  -->
+         
           <div class="col-md-4 col-sm-6 item">
             <div class="thumbnail">
               <div class="caption">
@@ -116,14 +116,16 @@
               </div>
             </div>
           </div>
-
+           </script>
         </div> <!--/.masonry-container  -->
-      
+     
 </div><!-- /.container -->
 
 <p class="p">Demo by Maria Antonietta Perna. <a href="http://www.sitepoint.com/bootstrap-tabs-play-nice-with-masonry-library" target="_blank">See article</a>.</p>
 
-<script src="script.js"></script>
+<script src="masonry.js"></script>
+<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+<script src="app.js"></script>
 
 </body>
 </html>
