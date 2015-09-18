@@ -80,8 +80,7 @@ router.get('/stylist', function(req, res) {
         //     return parsedURL.path.match(/.*\bwin\b/);
         // });
         
-        // myGrawler.on('fetchstart', )
-
+        
         myCrawler.on('fetchcomplete', function(queueItem, responseBuffer, response) {
 
             // if (queueItem.depth > 1) {
@@ -95,7 +94,7 @@ router.get('/stylist', function(req, res) {
                     console.log('temp/' + utils.urlToFilename(queueItem.url) + ' persisted temporarily'.gray);
                 });
 
-                xray(responseBuffer, 'div.grid', [{ //div class=article__hero
+                xray(responseBuffer, 'div.grid', [{ 
                         img: 'img@srcset',
                         headline: 'h1.summary__title',
                         content: 'p.summary__sell',
@@ -110,6 +109,13 @@ router.get('/stylist', function(req, res) {
                         }
                     });
             // }
+
+            // http://www.stylist.co.uk/api/widgets/win?ids=10561709b04b64d2604aae366e405760,
+            //         2ad9357530912b82cd7a0b0bcad08a92
+            //         &
+            //         dedupeIds=55edbd9d0e7a93fc1d6bbd3d
+
+
             utils.saveFile('temp/stylist.json', JSON.stringify(json), function(err) {
                 if (err) {
                     throw err;
@@ -125,7 +131,7 @@ router.get('/stylist', function(req, res) {
             res.type('application/json; charset=utf-8');
             res.send(json);
 
-            utils.saveFile('persist/stylist.json', JSON.stringify(json), function(err) {
+            utils.saveFile('persist/stylist.json', 'window.DB = '+ JSON.stringify(json), function(err) {
                 if (err) {
                     throw err;
                 }
