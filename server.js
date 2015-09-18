@@ -108,6 +108,18 @@ router.get('/stylist', function(req, res) {
                             json[queueItem.url] = data;
                         }
                     });
+
+                    xray(responseBuffer, 'div', [{ 
+                        id: 'div@data-widget-id'
+                    }])
+                    (function(err, data) {
+                        if (err) {
+                            console.log('Error: ' + err);
+                        } else {
+                            console.log(JSON.stringify(data));
+                            json[data.id] = data;
+                        }
+                    });
             // }
 
             // http://www.stylist.co.uk/api/widgets/win?ids=10561709b04b64d2604aae366e405760,
