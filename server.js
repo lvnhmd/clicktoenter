@@ -13,7 +13,6 @@ var utils = require('./utils');
 var Crawler = require('simplecrawler');
 require('colors');
 var xray = require('x-ray')();
-var prettyjson = require('prettyjson');
 var port = process.env.PORT || 8080; 
 // var config = require('./config')[process.env.NODE_ENV || 'production'];
 
@@ -72,29 +71,29 @@ router.get('/stylist', function(req, res) {
 
     var fetch = function() {
 
-        var myCrawler = new Crawler('www.stylist.co.uk', '/win');
+        // var myCrawler = new Crawler('www.stylist.co.uk', '/win');
 
-        myCrawler.maxDepth = 1;
+        // myCrawler.maxDepth = 1;
 
-        // myCrawler.addFetchCondition(function(parsedURL) {
-        //     return parsedURL.path.match(/.*\bwin\b/);
-        // });
+        // // myCrawler.addFetchCondition(function(parsedURL) {
+        // //     return parsedURL.path.match(/.*\bwin\b/);
+        // // });
         
         
-        myCrawler.on('fetchcomplete', function(queueItem, responseBuffer, response) {
+        // myCrawler.on('fetchcomplete', function(queueItem, responseBuffer, response) {
 
             // if (queueItem.depth > 1) {
 
                 // console.log(JSON.stringify(queueItem));
                 // console.log(responseBuffer.toString('utf8'));
-                utils.saveFile('temp/' + utils.urlToFilename(queueItem.url), responseBuffer.toString('utf8'), function(err) {
-                    if (err) {
-                        throw err;
-                    }
-                    console.log('temp/' + utils.urlToFilename(queueItem.url) + ' persisted temporarily'.gray);
-                });
+                // utils.saveFile('temp/' + utils.urlToFilename(queueItem.url), responseBuffer.toString('utf8'), function(err) {
+                //     if (err) {
+                //         throw err;
+                //     }
+                //     console.log('temp/' + utils.urlToFilename(queueItem.url) + ' persisted temporarily'.gray);
+                // });
 
-                xray(responseBuffer, 'div.grid', [{ 
+                xray('http://www.stylist.co.uk/win', 'div.grid', [{ 
                         img: 'img@srcset',
                         headline: 'h1.summary__title',
                         content: 'p.summary__sell',
@@ -104,22 +103,23 @@ router.get('/stylist', function(req, res) {
                         if (err) {
                             console.log('Error: ' + err);
                         } else {
-                            console.log(JSON.stringify(data));
-                            json[queueItem.url] = data;
+                            console.log(JSON.stringify(data,undefined,4));
+                            // json[queueItem.url] = data;
+                            json['www.stylist.co.uk/win'] = data;
                         }
                     });
 
-                    xray(responseBuffer, 'div', [{ 
-                        id: 'div@data-widget-id'
-                    }])
-                    (function(err, data) {
-                        if (err) {
-                            console.log('Error: ' + err);
-                        } else {
-                            console.log(JSON.stringify(data));
-                            json[data.id] = data;
-                        }
-                    });
+                    // xray(responseBuffer, 'div', [{ 
+                    //     id: 'div@data-widget-id'
+                    // }])
+                    // (function(err, data) {
+                    //     if (err) {
+                    //         console.log('Error: ' + err);
+                    //     } else {
+                    //         console.log(JSON.stringify(data));
+                    //         json[data.id] = data;
+                    //     }
+                    // });
             // }
 
             // http://www.stylist.co.uk/api/widgets/win?ids=10561709b04b64d2604aae366e405760,
@@ -135,30 +135,30 @@ router.get('/stylist', function(req, res) {
                 console.log('temp/stylist.json persisted temporarily'.gray);
             });
 
-        });
+        // });
 
-        myCrawler.on('complete', function() {
-            console.log('DONE!'.rainbow);
+        // myCrawler.on('complete', function() {
+        //     console.log('DONE!'.rainbow);
 
-            res.type('application/json; charset=utf-8');
-            res.send(json);
+        //     res.type('application/json; charset=utf-8');
+        //     res.send(json);
 
-            utils.saveFile('persist/stylist.json', 'window.DB = '+ JSON.stringify(json), function(err) {
-                if (err) {
-                    throw err;
-                }
-                console.log('stylist.json persisted permanently'.green);
+        //     utils.saveFile('persist/stylist.json', 'window.DB = '+ JSON.stringify(json), function(err) {
+        //         if (err) {
+        //             throw err;
+        //         }
+        //         console.log('stylist.json persisted permanently'.green);
 
-                // utils.cleanUp('temp', function(err) {
-                //     if (err) {
-                //         throw err;
-                //     }
-                // });
-            });
-        });
+        //         // utils.cleanUp('temp', function(err) {
+        //         //     if (err) {
+        //         //         throw err;
+        //         //     }
+        //         // });
+        //     });
+        // });
 
-        myCrawler.start();
+        // myCrawler.start();
 
-    };
+    }; //end fetch
 
 });
