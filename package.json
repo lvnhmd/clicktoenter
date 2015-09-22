@@ -28,6 +28,7 @@
     "colors": "^1.1.2",
     "express": "^4.13.3",
     "htmlparser": "^1.7.7",
+    "jsdom": "^6.5.1",
     "mkdirp": "^0.5.1",
     "node-uuid": "^1.4.3",
     "ractive": "^0.7.3",
