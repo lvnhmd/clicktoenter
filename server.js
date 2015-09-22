@@ -42,7 +42,7 @@ Start a job to clean up temp file after 10 min
 
 
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('running on port ' + port);
 
 router.get('/stylist', function(req, res) {
 
