@@ -36,11 +36,6 @@ jsdom.env({
         $("a").each(function() {
             console.log(" ~", $(this).text(), " ~", $(this).attr("href"));
         });
-    },
-    features: {
-        FetchExternalResources: ["links"],
-        MutationEvents           : true
-
     }
 });
 // var options = {
