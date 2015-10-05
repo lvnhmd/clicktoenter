@@ -33,8 +33,9 @@ jsdom.env({
     scripts: ["http://code.jquery.com/jquery.js"],
     done: function(err, window) {
         var $ = window.$;
+        var i=0;
         $("a").each(function() {
-            console.log(" ~", $(this).text(), " ~", $(this).attr("href"));
+            console.log(i++ , " ~", $(this).text(), " ~", $(this).attr("href"));
         });
     },
     features: {
