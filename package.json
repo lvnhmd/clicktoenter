@@ -27,6 +27,7 @@
   "dependencies": {
     "colors": "^1.1.2",
     "express": "^4.13.3",
+    "hapi": "^10.4.0",
     "htmlparser": "^1.7.7",
     "jsdom": "^6.5.1",
     "mkdirp": "^0.5.1",

@@ -16,7 +16,7 @@
     el: 'clicktoenterapp',
     template: '#main',
     data: {
-      items: DB["http://www.stylist.co.uk/win"]
+      items: DB["www.stylist.co.uk/win"]
     }
   });
 }());
