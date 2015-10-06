@@ -10,7 +10,7 @@ var Hapi = require('hapi');
 
 var server = new Hapi.Server();
 
-server.connection();
+server.connection({ port: 8088 });
 
 server.route({
     method: 'GET',
