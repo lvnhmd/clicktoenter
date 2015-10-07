@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
@@ -67,22 +67,13 @@
             </p>
         </div>
     </script>
-    <script src="masonry.js"></script>
+    <script src="assets/js/masonry.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.9.3/lodash.min.js"></script>
     <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
     <!-- LOAD THE DATA -->
-    <script src="../../persist/stylist.json"></script>
-    <script>
-    (function() {
-        var app = new Ractive({
-            el: 'clicktoenterapp',
-            template: '#main',
-            data: {
-                items: DB["www.stylist.co.uk/win"]
-            }
-        });
-    }());
-    </script>
+    <script src="persist/stylist.json"></script>
+    <script src="assets/js/app.js"></script>
+    
 </body>
 
 </html>

@@ -1,0 +1,15 @@
+body {
+  padding-top: 50px;
+}
+
+.main-container {
+  padding: 40px 15px;
+}
+
+.p {
+  text-align: center;
+}
+
+.thumbnail {
+	border-radius: 0px;
+} 
