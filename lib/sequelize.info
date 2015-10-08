@@ -3,5 +3,12 @@ http://nickolus.svbtle.com/writing-a-rest-api-with-hapijs
 npm install sequelize --save
 npm install sequelize-cli --save
 
-node_modules/.bin/sequelize init
-node_modules/.bin/sequelize model:create --name Competition --attributes key:string,json:text
+cd lib
+../node_modules/.bin/sequelize init
+../node_modules/.bin/sequelize model:create --name Competition --attributes key:string,json:text
+../node_modules/.bin/sequelize model:create --name User --attributes name:string,email:string,password:string
+../node_modules/.bin/sequelize model:create --name UserCompetition --attributes user_id:integer,competition_id:integer
+
+
+and we will record their IP so they cannot vote twice - or make userid,compid unique in table usercompetition 
+http://www.eguneys.com/blog/2014/09/17/building-a-voting-app-rest-api-slash-w-sequelize
